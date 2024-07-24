@@ -1,0 +1,45 @@
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.AssemblyReference.cache
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.MainMenu.resources
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.GenerateResource.cache
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.exe.config
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.exe
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.pdb
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Properties.Resources.resources
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.CoreCompileInputs.cache
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.exe
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.pdb
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.LogUp.resources
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\BouncyCastle.Cryptography.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.Streams.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Hash.xxHash.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\MySql.Data.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Buffers.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Configuration.ConfigurationManager.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.IO.Pipelines.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Memory.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Numerics.Vectors.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Threading.Tasks.Extensions.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\ZstdSharp.dll
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\BouncyCastle.Cryptography.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.pdb
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.Streams.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Hash.xxHash.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\MySql.Data.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Buffers.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Configuration.ConfigurationManager.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.IO.Pipelines.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Memory.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Numerics.Vectors.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.Up2Date
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Main.resources

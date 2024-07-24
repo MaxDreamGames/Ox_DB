@@ -1,0 +1,6 @@
+use ox_db;
+create table Users (
+ID int not null,
+Name varchar(255),
+Email varchar(255));
+select * from Users;
