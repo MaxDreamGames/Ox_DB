@@ -43,3 +43,6 @@ F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Runtime.CompilerServices.Uns
 F:\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.Up2Date
 F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Main.resources
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Sewing.resources
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.ExerciseTherapy.resources
+F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Massage.resources

@@ -6,8 +6,6 @@ namespace OX_DB
 {
     internal class DatabaseManager
     {
-        string database;
-
         public MySqlConnection GetConnection(string host, int port, string database, string username, string password)
         {
             string connectionString = $"Server={host};Database={database};port={port};User Id={username};password={password};charset=utf8";

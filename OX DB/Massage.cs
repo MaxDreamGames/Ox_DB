@@ -4,19 +4,21 @@ using System.Windows.Forms;
 
 namespace OX_DB
 {
-    public partial class MainMenu : Form
+    public partial class Massage : Form
     {
+        public int ID { get; set; }
+        public Main ParentFm { get; set; }
         Color closeBtnColor;
         bool isDraging = false;
         Point startPoint = new Point(0, 0);
 
 
-        public MainMenu()
+        public Massage()
         {
             InitializeComponent();
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
+        private void Massage_Load(object sender, EventArgs e)
         {
             closeBtnColor = closeBtn.BackColor;
             label1.Text = Name;
@@ -32,7 +34,7 @@ namespace OX_DB
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void minimizeBtn_Click(object sender, EventArgs e)
@@ -73,6 +75,12 @@ namespace OX_DB
             isDraging = false;
         }
 
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            ParentFm.Show();
+            Close();
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -88,5 +96,3 @@ namespace OX_DB
 
     }
 }
-// myDream-MaxDeep/agata0417
-// max_senderCode228

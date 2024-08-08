@@ -1,6 +1,51 @@
+create database ox_db default charset cp1251;
 use ox_db;
 create table Users (
 ID int not null,
 Name varchar(255),
 Email varchar(255));
-select * from Users;
+create table Clients (
+ID int not null,
+`ФИО` varchar(1000),
+`Телефон` varchar(12),
+`Адрес` varchar(100),
+`Дата рождения` date,
+`Тип услуг` varchar(10),
+`Уведомление` date);
+create table Sewing (
+ID int not null,
+`ФИО` varchar(1000),
+`Дата` date,
+`ОШ` float,
+`ДП` float,
+`ОГ` float,
+`ОТ` float,
+`ОБ` float,
+`ДИ` float,
+`ДПТ` float,
+`ВГр` float,
+`ВГК` float,
+`ЦГр` float,
+`Шгрм` float,
+`Шгрб` float,
+`ДСТ` float,
+`ВПрЗ` float,
+`ДСК` float,
+`ШС` float,
+`ДБ` float,
+`Рзв` float,
+`Рбв` float,
+`Рзн` float,
+`Рбн` float,
+`Рпн` float,
+`СБЗ` float,
+`Л-Я` float,
+`Г-Ж` float,
+`1 встреча` date,
+`Тех. рисунок` varchar(2000),
+`Описание` varchar(5000),
+`Описание посадки` varchar(5000),
+`Аватар` varchar(2000),
+`Отзыв` varchar(5000),
+`Готовое изделие` varchar(2000)
+);

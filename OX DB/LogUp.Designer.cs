@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogUp));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -57,6 +59,7 @@
             this.backBtn1 = new System.Windows.Forms.Button();
             this.finalyLogInBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.logUpPanel.SuspendLayout();
@@ -70,7 +73,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(199)))), ((int)(((byte)(165)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(155)))), ((int)(((byte)(173)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.minimizeBtn);
@@ -108,7 +111,7 @@
             // minimizeBtn
             // 
             this.minimizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(198)))), ((int)(((byte)(188)))));
+            this.minimizeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(218)))), ((int)(((byte)(235)))));
             this.minimizeBtn.FlatAppearance.BorderSize = 0;
             this.minimizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -126,7 +129,7 @@
             // closeBtn
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(198)))), ((int)(((byte)(188)))));
+            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(218)))), ((int)(((byte)(235)))));
             this.closeBtn.FlatAppearance.BorderSize = 0;
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -160,7 +163,7 @@
             // 
             // back2Btn
             // 
-            this.back2Btn.BackColor = System.Drawing.Color.Red;
+            this.back2Btn.BackColor = System.Drawing.Color.IndianRed;
             this.back2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.back2Btn.Font = new System.Drawing.Font("Comic Sans MS", 14F);
             this.back2Btn.ForeColor = System.Drawing.SystemColors.Control;
@@ -175,11 +178,11 @@
             // nextBtn
             // 
             this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(104)))), ((int)(((byte)(237)))));
+            this.nextBtn.BackColor = System.Drawing.Color.SteelBlue;
             this.nextBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.nextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextBtn.Font = new System.Drawing.Font("Comic Sans MS", 24F);
-            this.nextBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.nextBtn.ForeColor = System.Drawing.Color.Black;
             this.nextBtn.Location = new System.Drawing.Point(472, 474);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(480, 55);
@@ -243,14 +246,14 @@
             this.codePanel.Controls.Add(this.Next2Btn);
             this.codePanel.Controls.Add(this.codeText);
             this.codePanel.Controls.Add(this.label4);
-            this.codePanel.Location = new System.Drawing.Point(-1, 159);
+            this.codePanel.Location = new System.Drawing.Point(0, 162);
             this.codePanel.Name = "codePanel";
             this.codePanel.Size = new System.Drawing.Size(1422, 568);
             this.codePanel.TabIndex = 4;
             // 
             // back3Btn
             // 
-            this.back3Btn.BackColor = System.Drawing.Color.Red;
+            this.back3Btn.BackColor = System.Drawing.Color.IndianRed;
             this.back3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.back3Btn.Font = new System.Drawing.Font("Comic Sans MS", 14F);
             this.back3Btn.ForeColor = System.Drawing.SystemColors.Control;
@@ -265,11 +268,11 @@
             // Next2Btn
             // 
             this.Next2Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Next2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(104)))), ((int)(((byte)(237)))));
+            this.Next2Btn.BackColor = System.Drawing.Color.SteelBlue;
             this.Next2Btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.Next2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Next2Btn.Font = new System.Drawing.Font("Comic Sans MS", 24F);
-            this.Next2Btn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Next2Btn.ForeColor = System.Drawing.Color.Black;
             this.Next2Btn.Location = new System.Drawing.Point(676, 360);
             this.Next2Btn.Name = "Next2Btn";
             this.Next2Btn.Size = new System.Drawing.Size(241, 67);
@@ -309,7 +312,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.successRegPanel.Controls.Add(this.nextButton);
             this.successRegPanel.Controls.Add(this.label5);
-            this.successRegPanel.Location = new System.Drawing.Point(-1, 160);
+            this.successRegPanel.Location = new System.Drawing.Point(0, 161);
             this.successRegPanel.Name = "successRegPanel";
             this.successRegPanel.Size = new System.Drawing.Size(1422, 568);
             this.successRegPanel.TabIndex = 5;
@@ -317,11 +320,11 @@
             // nextButton
             // 
             this.nextButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.nextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(104)))), ((int)(((byte)(237)))));
+            this.nextButton.BackColor = System.Drawing.Color.SteelBlue;
             this.nextButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextButton.Font = new System.Drawing.Font("Comic Sans MS", 24F);
-            this.nextButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.nextButton.ForeColor = System.Drawing.Color.Black;
             this.nextButton.Location = new System.Drawing.Point(494, 313);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(450, 70);
@@ -349,7 +352,7 @@
             this.startPanel.Controls.Add(this.LogInBtn);
             this.startPanel.Controls.Add(this.logUpBtn);
             this.startPanel.Controls.Add(this.label7);
-            this.startPanel.Location = new System.Drawing.Point(0, 150);
+            this.startPanel.Location = new System.Drawing.Point(0, 96);
             this.startPanel.Name = "startPanel";
             this.startPanel.Size = new System.Drawing.Size(1420, 631);
             this.startPanel.TabIndex = 6;
@@ -357,7 +360,7 @@
             // LogInBtn
             // 
             this.LogInBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.LogInBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(160)))), ((int)(((byte)(227)))));
+            this.LogInBtn.BackColor = System.Drawing.Color.SteelBlue;
             this.LogInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogInBtn.Font = new System.Drawing.Font("Comic Sans MS", 24F);
             this.LogInBtn.Location = new System.Drawing.Point(471, 366);
@@ -371,7 +374,7 @@
             // logUpBtn
             // 
             this.logUpBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.logUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(196)))), ((int)(((byte)(0)))));
+            this.logUpBtn.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.logUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logUpBtn.Font = new System.Drawing.Font("Comic Sans MS", 24F);
             this.logUpBtn.Location = new System.Drawing.Point(471, 270);
@@ -402,7 +405,7 @@
             this.logInPanel.Controls.Add(this.backBtn1);
             this.logInPanel.Controls.Add(this.finalyLogInBtn);
             this.logInPanel.Controls.Add(this.label8);
-            this.logInPanel.Location = new System.Drawing.Point(0, 148);
+            this.logInPanel.Location = new System.Drawing.Point(1, 96);
             this.logInPanel.Name = "logInPanel";
             this.logInPanel.Size = new System.Drawing.Size(1422, 631);
             this.logInPanel.TabIndex = 7;
@@ -412,7 +415,7 @@
             this.usersList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.usersList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(132)))));
+            this.usersList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
             this.usersList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.75F);
             this.usersList.FormattingEnabled = true;
@@ -424,7 +427,7 @@
             // 
             // backBtn1
             // 
-            this.backBtn1.BackColor = System.Drawing.Color.Red;
+            this.backBtn1.BackColor = System.Drawing.Color.IndianRed;
             this.backBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn1.Font = new System.Drawing.Font("Comic Sans MS", 14F);
             this.backBtn1.ForeColor = System.Drawing.SystemColors.Control;
@@ -439,7 +442,7 @@
             // finalyLogInBtn
             // 
             this.finalyLogInBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.finalyLogInBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(160)))), ((int)(((byte)(227)))));
+            this.finalyLogInBtn.BackColor = System.Drawing.Color.SteelBlue;
             this.finalyLogInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.finalyLogInBtn.Font = new System.Drawing.Font("Comic Sans MS", 24F);
             this.finalyLogInBtn.Location = new System.Drawing.Point(483, 512);
@@ -462,11 +465,18 @@
             this.label8.Text = "Вход";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // LogUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(255)))), ((int)(((byte)(216)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1422, 864);
             this.Controls.Add(this.logInPanel);
             this.Controls.Add(this.startPanel);
@@ -475,6 +485,7 @@
             this.Controls.Add(this.logUpPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogUp";
             this.Text = "LogUp";
             this.Load += new System.EventHandler(this.LogUp_Load);
@@ -522,5 +533,6 @@
         private System.Windows.Forms.Button back2Btn;
         private System.Windows.Forms.Button back3Btn;
         private System.Windows.Forms.ListBox usersList;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

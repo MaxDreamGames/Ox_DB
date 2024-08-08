@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace OX_DB
 {
@@ -13,10 +13,12 @@ namespace OX_DB
         Color closeBtnColor;
         bool isDraging = false;
         Point startPoint = new Point(0, 0);
-        ControlCollection codeCtrls;
         string name;
         string email;
         int code;
+        string msgBirthdayToday = "Сегодня день рождения у: ";
+        string msgBirthdayTomorrow = "Завтра день рождения у: ";
+        string msgNotify = "Сегодня встреча с: ";
 
 
         public LogUp()
@@ -26,16 +28,15 @@ namespace OX_DB
 
         private void LogUp_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(SetAutoRunValue(true, Environment.CurrentDirectory + "\\OX DB.exe"));
+            WindowState = FormWindowState.Minimized;
             closeBtnColor = closeBtn.BackColor;
             label1.Text = Name;
             logUpPanel.Hide();
             logInPanel.Hide();
             codePanel.Hide();
             successRegPanel.Hide();
-            /* codeCtrls.Add(Next2Btn);
-             codeCtrls.Add(codeText);
-             codeCtrls.Add(label4);
-             Controls = new Control.ControlCollection();*/
+            CheckDate();
         }
 
         private void panel1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -117,31 +118,6 @@ namespace OX_DB
             foreach (DataRow el in users.Rows)
                 list.Add(el[0].ToString());
             usersList.DataSource = list;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = new SqlConnection("jk");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Test");
-                string msg = ex.Message;
-                foreach (var err in ex.Data.Keys)
-                {
-                    Console.WriteLine(err + ": " + ex.Data[err]);
-                }
-                msg += "\nSource: " + (ex.Source);
-                msg += "\n\nCall stack: " + ex.StackTrace;
-                msg += "\n\nTarget Site: " + ex.TargetSite;
-                msg += "\nHResult: " + ex.HResult;
-                msg += "\nHlink: " + ex.HelpLink;
-                EmailSender es = new EmailSender("Error", msg, "m@br.ru");
-                es.SendEmail();
-            }
         }
 
         private void nameText_Enter(object sender, EventArgs e)
@@ -256,6 +232,18 @@ namespace OX_DB
                 return;
             }
 
+            Main main = new Main();
+            EmailSender.user["Name"] = usersList.SelectedItem.ToString();
+            DatabaseManager databaseManager = new DatabaseManager();
+            EmailSender.user.Add("Email", databaseManager.Request($"SELECT Email FROM Users WHERE Name = '{usersList.SelectedItem.ToString()}'").Rows[0][0].ToString());
+            main.Show();
+            this.Hide();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Focus();
+            WindowState = FormWindowState.Normal;
         }
 
 
@@ -268,10 +256,78 @@ namespace OX_DB
         {
             DatabaseManager dm = new DatabaseManager();
             int currentID = Convert.ToInt32(dm.Request("SELECT COUNT(ID) FROM Users").Rows[0][0]);
-            Console.WriteLine(currentID);
             dm.Request($"INSERT INTO Users (ID, Name, Email) VALUES ({currentID}, '{name}', '{email}');");
-            Console.WriteLine(dm.Request("SELECT * FROM Users").ToString());
         }
 
+        void CheckDate()
+        {
+
+            string currentDate = $"{DateTime.Now.Day.ToString("00")}.{DateTime.Now.Month.ToString("00")}";
+            DateTime tomorrow = DateTime.Now.AddDays(1);
+            string tomorrowDate = $"{tomorrow.Day.ToString("00")}.{tomorrow.Month.ToString("00")}";
+            DatabaseManager dm = new DatabaseManager();
+            DataTable dt = dm.Request("SELECT `ФИО`, `Дата рождения`, `Уведомление` FROM Clients");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow row = dt.Rows[i];
+                string[] birthdaySplited = row[1].ToString().Split('.');
+                string[] notifySplited = row[2].ToString().Split('.');
+                string birthdayDate = $"{birthdaySplited[0]}.{birthdaySplited[1]}";
+                string notifyDate = $"{notifySplited[0]}.{notifySplited[1]}";
+                if (notifyDate == currentDate)
+                {
+                    msgNotify += $"{row[0]}, ";
+                }
+                if (birthdayDate == currentDate)
+                {
+                    msgBirthdayToday += $"{row[0]} - {(DateTime.Now.Year - int.Parse(birthdaySplited[2].Split(' ')[0]))}, ";
+                }
+                if (birthdayDate == tomorrowDate)
+                {
+                    msgBirthdayTomorrow += $"{row[0]} - {(DateTime.Now.Year - int.Parse(birthdaySplited[2].Split(' ')[0]))}, ";
+                }
+            }
+
+            if (msgBirthdayToday != "Сегодня день рождения у: ")
+            {
+                notifyIcon1.BalloonTipText = msgBirthdayToday;
+                notifyIcon1.ShowBalloonTip(6000);
+            }
+            if (msgBirthdayTomorrow != "Завтра день рождения у: ")
+            {
+                notifyIcon1.BalloonTipText = msgBirthdayTomorrow;
+                notifyIcon1.ShowBalloonTip(6000);
+            }
+            if (msgNotify != "Сегодня встреча с: ")
+            {
+                notifyIcon1.BalloonTipText = msgNotify;
+                notifyIcon1.ShowBalloonTip(6000);
+            }
+        }
+
+        bool SetAutoRunValue(bool autoRun, string path)
+        {
+            const string name = "OX DB";
+            string exePath = path;
+            RegistryKey reg;
+
+            reg = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+
+            try
+            {
+                if (autoRun)
+                    reg.SetValue(name, exePath);
+                else
+                    reg.DeleteValue(name);
+
+                reg.Flush();
+                reg.Close();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
