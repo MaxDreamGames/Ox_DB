@@ -130,6 +130,7 @@ namespace OX_DB
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -302,7 +303,7 @@ namespace OX_DB
             this.fittingPanel.Controls.Add(this.label35);
             this.fittingPanel.Controls.Add(this.label34);
             this.fittingPanel.Controls.Add(this.label31);
-            this.fittingPanel.Location = new System.Drawing.Point(3, 104);
+            this.fittingPanel.Location = new System.Drawing.Point(7, 94);
             this.fittingPanel.Name = "fittingPanel";
             this.fittingPanel.Size = new System.Drawing.Size(1476, 849);
             this.fittingPanel.TabIndex = 11;
@@ -436,7 +437,7 @@ namespace OX_DB
             this.readyPanel.Controls.Add(this.readyProductPicture);
             this.readyPanel.Controls.Add(this.label38);
             this.readyPanel.Controls.Add(this.label39);
-            this.readyPanel.Location = new System.Drawing.Point(3, 102);
+            this.readyPanel.Location = new System.Drawing.Point(4, 99);
             this.readyPanel.Name = "readyPanel";
             this.readyPanel.Size = new System.Drawing.Size(1476, 844);
             this.readyPanel.TabIndex = 10;
@@ -540,6 +541,7 @@ namespace OX_DB
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.firstMeettingPanel.AutoScroll = true;
+            this.firstMeettingPanel.Controls.Add(this.label32);
             this.firstMeettingPanel.Controls.Add(this.description);
             this.firstMeettingPanel.Controls.Add(this.label30);
             this.firstMeettingPanel.Controls.Add(this.date);
@@ -611,18 +613,18 @@ namespace OX_DB
             this.description.AcceptsReturn = true;
             this.description.AcceptsTab = true;
             this.description.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.description.Location = new System.Drawing.Point(547, 623);
+            this.description.Location = new System.Drawing.Point(547, 671);
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.description.Size = new System.Drawing.Size(671, 246);
+            this.description.Size = new System.Drawing.Size(868, 198);
             this.description.TabIndex = 35;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(543, 600);
+            this.label30.Location = new System.Drawing.Point(543, 649);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(99, 20);
             this.label30.TabIndex = 61;
@@ -690,7 +692,7 @@ namespace OX_DB
             this.chooseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
             this.chooseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chooseBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chooseBtn.Location = new System.Drawing.Point(1241, 549);
+            this.chooseBtn.Location = new System.Drawing.Point(1224, 605);
             this.chooseBtn.Name = "chooseBtn";
             this.chooseBtn.Size = new System.Drawing.Size(140, 38);
             this.chooseBtn.TabIndex = 55;
@@ -704,9 +706,9 @@ namespace OX_DB
             | System.Windows.Forms.AnchorStyles.Right)));
             this.technicalPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.technicalPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.technicalPicture.Location = new System.Drawing.Point(547, 39);
+            this.technicalPicture.Location = new System.Drawing.Point(547, 58);
             this.technicalPicture.Name = "technicalPicture";
-            this.technicalPicture.Size = new System.Drawing.Size(671, 548);
+            this.technicalPicture.Size = new System.Drawing.Size(671, 585);
             this.technicalPicture.TabIndex = 54;
             this.technicalPicture.TabStop = false;
             // 
@@ -1217,14 +1219,25 @@ namespace OX_DB
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // label32
+            // 
+            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(778, 24);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(205, 20);
+            this.label32.TabIndex = 62;
+            this.label32.Text = "Технический рисунок";
+            // 
             // Sewing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1484, 1000);
-            this.Controls.Add(this.fittingPanel);
             this.Controls.Add(this.readyPanel);
+            this.Controls.Add(this.fittingPanel);
             this.Controls.Add(this.firstMeettingPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.backBtn);
@@ -1353,5 +1366,6 @@ namespace OX_DB
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.RichTextBox fitDescription;
+        private System.Windows.Forms.Label label32;
     }
 }

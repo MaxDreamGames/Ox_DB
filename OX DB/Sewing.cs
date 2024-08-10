@@ -727,12 +727,21 @@ namespace OX_DB
                 return false;
             }
 
-            // Convert images to byte arrays
-            byte[] img1Bytes = ImageToByteArray(img1);
-            byte[] img2Bytes = ImageToByteArray(img2);
+            try
+            {
+                // Convert images to byte arrays
+                byte[] img1Bytes = ImageToByteArray(img1);
+                byte[] img2Bytes = ImageToByteArray(img2);
 
-            // Compare byte arrays
-            return StructuralComparisons.StructuralEqualityComparer.Equals(img1Bytes, img2Bytes);
+                // Compare byte arrays
+                return StructuralComparisons.StructuralEqualityComparer.Equals(img1Bytes, img2Bytes);
+            }
+            catch (Exception ex)
+            {
+                emailSender.PrintException(ex, "Ошибка сравнения");
+                return false;
+            }
+
         }
         private byte[] ImageToByteArray(Image img)
         {
