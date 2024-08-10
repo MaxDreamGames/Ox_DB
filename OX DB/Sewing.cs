@@ -33,6 +33,10 @@ namespace OX_DB
 
         private void Sewing_Load(object sender, EventArgs e)
         {
+            if (!Directory.Exists(@Environment.CurrentDirectory + @"\img"))
+            {
+                Directory.CreateDirectory(@Environment.CurrentDirectory + @"\img");
+            }
             closeBtnColor = closeBtn.BackColor;
             label1.Text = Name;
 
@@ -411,8 +415,8 @@ namespace OX_DB
             {
                 if (string.IsNullOrEmpty(item.Text))
                 {
-                    MessageBox.Show("Не все поля заполнены!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
+                    item.Text = "0";
+                    continue;
                 }
                 if (!float.TryParse(item.Text, out float value))
                 {

@@ -43,6 +43,7 @@ namespace OX_DB
             this.ready = new System.Windows.Forms.Button();
             this.fitting = new System.Windows.Forms.Button();
             this.fittingPanel = new System.Windows.Forms.Panel();
+            this.fitDescription = new System.Windows.Forms.RichTextBox();
             this.saveBtnInFitting = new System.Windows.Forms.Button();
             this.dateInFitting = new System.Windows.Forms.DateTimePicker();
             this.FIOInFitting = new System.Windows.Forms.Label();
@@ -129,7 +130,6 @@ namespace OX_DB
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.fitDescription = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -291,6 +291,7 @@ namespace OX_DB
             this.fittingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.fittingPanel.AutoScroll = true;
             this.fittingPanel.Controls.Add(this.fitDescription);
             this.fittingPanel.Controls.Add(this.saveBtnInFitting);
             this.fittingPanel.Controls.Add(this.dateInFitting);
@@ -301,12 +302,24 @@ namespace OX_DB
             this.fittingPanel.Controls.Add(this.label35);
             this.fittingPanel.Controls.Add(this.label34);
             this.fittingPanel.Controls.Add(this.label31);
-            this.fittingPanel.Location = new System.Drawing.Point(3, 102);
+            this.fittingPanel.Location = new System.Drawing.Point(3, 104);
             this.fittingPanel.Name = "fittingPanel";
-            this.fittingPanel.Size = new System.Drawing.Size(1476, 892);
+            this.fittingPanel.Size = new System.Drawing.Size(1476, 849);
             this.fittingPanel.TabIndex = 11;
             this.fittingPanel.Enter += new System.EventHandler(this.fittingPanel_Enter);
             this.fittingPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.fittingPanel_MouseClick);
+            // 
+            // fitDescription
+            // 
+            this.fitDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fitDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.fitDescription.Location = new System.Drawing.Point(13, 151);
+            this.fitDescription.MaxLength = 5000;
+            this.fitDescription.Name = "fitDescription";
+            this.fitDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.fitDescription.Size = new System.Drawing.Size(681, 734);
+            this.fitDescription.TabIndex = 67;
+            this.fitDescription.Text = "";
             // 
             // saveBtnInFitting
             // 
@@ -315,7 +328,7 @@ namespace OX_DB
             this.saveBtnInFitting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.saveBtnInFitting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtnInFitting.Font = new System.Drawing.Font("Comic Sans MS", 22.75F);
-            this.saveBtnInFitting.Location = new System.Drawing.Point(1198, 821);
+            this.saveBtnInFitting.Location = new System.Drawing.Point(1184, 814);
             this.saveBtnInFitting.Name = "saveBtnInFitting";
             this.saveBtnInFitting.Size = new System.Drawing.Size(241, 64);
             this.saveBtnInFitting.TabIndex = 66;
@@ -349,7 +362,7 @@ namespace OX_DB
             this.choosingBtnInFitting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
             this.choosingBtnInFitting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.choosingBtnInFitting.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.choosingBtnInFitting.Location = new System.Drawing.Point(1299, 764);
+            this.choosingBtnInFitting.Location = new System.Drawing.Point(1285, 764);
             this.choosingBtnInFitting.Name = "choosingBtnInFitting";
             this.choosingBtnInFitting.Size = new System.Drawing.Size(140, 38);
             this.choosingBtnInFitting.TabIndex = 64;
@@ -375,7 +388,7 @@ namespace OX_DB
             this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.avatar.Location = new System.Drawing.Point(715, 53);
             this.avatar.Name = "avatar";
-            this.avatar.Size = new System.Drawing.Size(723, 699);
+            this.avatar.Size = new System.Drawing.Size(709, 699);
             this.avatar.TabIndex = 63;
             this.avatar.TabStop = false;
             // 
@@ -414,6 +427,7 @@ namespace OX_DB
             this.readyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.readyPanel.AutoScroll = true;
             this.readyPanel.Controls.Add(this.saveBtnInReadyPanel);
             this.readyPanel.Controls.Add(this.FIOInReadyPanel);
             this.readyPanel.Controls.Add(this.review);
@@ -1202,18 +1216,6 @@ namespace OX_DB
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
-            // 
-            // fitDescription
-            // 
-            this.fitDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fitDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.fitDescription.Location = new System.Drawing.Point(13, 151);
-            this.fitDescription.MaxLength = 5000;
-            this.fitDescription.Name = "fitDescription";
-            this.fitDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.fitDescription.Size = new System.Drawing.Size(681, 734);
-            this.fitDescription.TabIndex = 67;
-            this.fitDescription.Text = "";
             // 
             // Sewing
             // 

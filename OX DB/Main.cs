@@ -139,8 +139,6 @@ namespace OX_DB
                     MessageBox.Show("Неверный тип данных!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     dataGridView1.CancelEdit();
                 }
-
-
             }
             else
             {
@@ -272,10 +270,16 @@ namespace OX_DB
             {
                 if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("шв"))
                     швейкаToolStripMenuItem.Enabled = false;
+                else
+                    швейкаToolStripMenuItem.Enabled=true;
                 if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("ЛФК"))
                     лФКToolStripMenuItem.Enabled = false;
+                else
+                    лФКToolStripMenuItem.Enabled = true;
                 if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("мсж"))
                     массажToolStripMenuItem.Enabled = false;
+                else
+                    массажToolStripMenuItem.Enabled = true;
                 contextMenuStrip1.Show(dataGridView1, e.Location);
             }
         }
