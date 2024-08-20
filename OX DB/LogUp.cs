@@ -31,7 +31,7 @@ namespace OX_DB
             Console.WriteLine(SetAutoRunValue(true, Environment.CurrentDirectory + "\\OX DB.exe"));
             WindowState = FormWindowState.Minimized;
             closeBtnColor = closeBtn.BackColor;
-            label1.Text = Name;
+            label1.Text = Text;
             logUpPanel.Hide();
             logInPanel.Hide();
             codePanel.Hide();

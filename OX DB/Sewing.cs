@@ -38,7 +38,7 @@ namespace OX_DB
                 Directory.CreateDirectory(@Environment.CurrentDirectory + @"\img");
             }
             closeBtnColor = closeBtn.BackColor;
-            label1.Text = Name;
+            label1.Text = Text;
 
             panels = new Panel[3] { firstMeettingPanel, fittingPanel, readyPanel };
             textBoxesOfFirstMeeting = new TextBox[25] { OSh, DP, OG, OT, OB, DI, DPT, VGr, VGK, CGr, Shgrm, Shgrb, DST, VPrZ, DSK, ShS, DB, Rzv, Rbv, Rzn, Rbn, Rpn, SBZ, L_Ya, G_Zh };
@@ -147,7 +147,7 @@ namespace OX_DB
 
             imageOfTechnicalDrowingPath = FileManager.CopyFile(imageOfTechnicalDrowingPath, $"{Environment.CurrentDirectory}\\img"); // save image path after copying
             Console.WriteLine(imageOfTechnicalDrowingPath);
-            if (CheckExistingOfThisPersonInSewing()) // check existing of the person in sewing table before saving
+            if (databaseManager.CheckExistingOfThisPersonInTable(FIO.Text, "Sewing")) // check existing of the person in sewing table before saving
             {
                 // update data in the table
                 string updateQuery = GenerateSewingUpdateQuery(date.Value, OSh.Text.Replace(',', '.'), DP.Text.Replace(',', '.'), OG.Text.Replace(',', '.'), OT.Text.Replace(',', '.'), OB.Text.Replace(',', '.'), DI.Text.Replace(',', '.'),
@@ -180,7 +180,7 @@ namespace OX_DB
 
         private void fitting_Click(object sender, EventArgs e)
         {
-            if (!CheckExistingOfThisPersonInSewing())
+            if (!databaseManager.CheckExistingOfThisPersonInTable(FIO.Text, "Sewing"))
             {
 
                 MessageBox.Show("Сначала заполните данный о клиенте!", "Клиент не найден", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -194,7 +194,7 @@ namespace OX_DB
 
         private void ready_Click(object sender, EventArgs e)
         {
-            if (!CheckExistingOfThisPersonInSewing())
+            if (!databaseManager.CheckExistingOfThisPersonInTable(FIO.Text, "Sewing"))
             {
 
                 MessageBox.Show("Сначала заполните данный о клиенте!", "Клиент не найден", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -335,16 +335,11 @@ namespace OX_DB
                 readyProductPicture.BackgroundImage = new Bitmap(imageOfReadyProduct);
         }
 
-        bool CheckExistingOfThisPersonInSewing() // func: check existing of the person in sewing table
-        {
-            if (databaseManager.Request($"SELECT * FROM Sewing WHERE `ФИО` = '{FIO.Text}'").Rows.Count > 0)
-                return true;
-            return false;
-        }
+
 
         bool CheckDataUpdating() // check the succes of the updating
         {
-            if (!CheckExistingOfThisPersonInSewing())
+            if (!databaseManager.CheckExistingOfThisPersonInTable(FIO.Text, "Sewing"))
                 return false;
 
             DataRow row = databaseManager.Request($"SELECT * FROM Sewing WHERE `ФИО` = '{FIO.Text}'").Rows[0];

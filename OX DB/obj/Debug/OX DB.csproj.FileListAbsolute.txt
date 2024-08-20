@@ -46,3 +46,50 @@ F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Main.resources
 F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Sewing.resources
 F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.ExerciseTherapy.resources
 F:\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Massage.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.exe.config
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.exe
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\OX DB.pdb
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\BouncyCastle.Cryptography.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.Streams.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Hash.xxHash.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\MySql.Data.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Buffers.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Configuration.ConfigurationManager.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.IO.Pipelines.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Memory.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Numerics.Vectors.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Threading.Tasks.Extensions.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\ZstdSharp.dll
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\BouncyCastle.Cryptography.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.pdb
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Google.Protobuf.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Compression.LZ4.Streams.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\K4os.Hash.xxHash.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\MySql.Data.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Buffers.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Configuration.ConfigurationManager.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.IO.Pipelines.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Memory.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Numerics.Vectors.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.AssemblyReference.cache
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.MainMenu.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.LogUp.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Main.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Properties.Resources.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Sewing.resources
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.GenerateResource.cache
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.CoreCompileInputs.cache
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.csproj.Up2Date
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.exe
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX DB.pdb
+F:\Computer Science\Programming\Apps\C#\OX DB\OX DB\obj\Debug\OX_DB.Sport.resources

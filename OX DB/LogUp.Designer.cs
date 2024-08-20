@@ -487,7 +487,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogUp";
-            this.Text = "LogUp";
+            this.Text = "Log Up";
             this.Load += new System.EventHandler(this.LogUp_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

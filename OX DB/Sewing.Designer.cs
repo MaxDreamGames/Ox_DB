@@ -63,6 +63,7 @@ namespace OX_DB
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.firstMeettingPanel = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
             this.description = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DateTimePicker();
@@ -130,7 +131,6 @@ namespace OX_DB
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -607,6 +607,17 @@ namespace OX_DB
             this.firstMeettingPanel.Name = "firstMeettingPanel";
             this.firstMeettingPanel.Size = new System.Drawing.Size(1476, 889);
             this.firstMeettingPanel.TabIndex = 12;
+            // 
+            // label32
+            // 
+            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(778, 24);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(205, 20);
+            this.label32.TabIndex = 62;
+            this.label32.Text = "Технический рисунок";
             // 
             // description
             // 
@@ -1218,17 +1229,6 @@ namespace OX_DB
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
-            // 
-            // label32
-            // 
-            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(778, 24);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(205, 20);
-            this.label32.TabIndex = 62;
-            this.label32.Text = "Технический рисунок";
             // 
             // Sewing
             // 

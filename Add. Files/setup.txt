@@ -49,3 +49,45 @@ ID int not null,
 `Отзыв` varchar(5000),
 `Готовое изделие` varchar(2000)
 );
+create table Physical_Therapy (
+ID int not null,
+`ФИО` varchar(1000),
+`Дата` date not null,
+`Пол` ENUM('М', 'Ж'),
+`Рост` int,
+`Анамнез` varchar(5000),
+`Программа` varchar(5000),
+primary key (ID)
+);
+create table Trainings (
+ID int not null,
+userID int not null,
+`Номер` int not null,
+`Вес` float,
+`Давление` float,
+`ЧСС` float,
+`Остальное` varchar(5000),
+primary key (ID),
+foreign key (userID) references Physical_Therapy(ID) on delete cascade
+);
+create table Massage (
+ID int not null,
+`ФИО` varchar(1000),
+`Дата` date not null,
+`Пол` ENUM('М', 'Ж'),
+`Рост` int,
+`Анамнез` varchar(5000),
+`Программа` varchar(5000),
+primary key (ID)
+);
+create table Massage_sessions(
+ID int not null,
+userID int not null,
+`Номер` int not null,
+`Вес` float,
+`Давление` float,
+`ЧСС` float,
+`Остальное` varchar(5000),
+primary key (ID),
+foreign key (userID) references Massage(ID) on delete cascade
+);

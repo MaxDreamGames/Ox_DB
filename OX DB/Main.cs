@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace OX_DB
 {
@@ -22,9 +22,10 @@ namespace OX_DB
         private void Main_Load(object sender, EventArgs e)
         {
             closeBtnColor = closeBtn.BackColor;
-            label1.Text = Name;
+            label1.Text = Text;
             textBoxes = new TextBox[3] { FIOText, phoneText, addressText };
             SelectData();
+            SetNotifyDate();
         }
 
         private void panel1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -124,30 +125,18 @@ namespace OX_DB
                 string newStr = $"{dataGridView1.SelectedCells[0].Value.ToString().Split('.')[2]}-{dataGridView1.SelectedCells[0].Value.ToString().Split('.')[1]}-{dataGridView1.SelectedCells[0].Value.ToString().Split('.')[0]}";
                 newStr = newStr.Replace(" 0:00:00", "");
                 Console.WriteLine(newStr);
-                try
-                {
+                if (DateTime.TryParse(newStr, out DateTime dt))
                     databaseManager.Request($"UPDATE Clients SET `{dataGridView1.SelectedCells[0].OwningColumn.Name}` = '{newStr}' WHERE ID = {e.RowIndex + 1};");
+                else
+                {
+                    MessageBox.Show("Неверный тип данных!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dataGridView1.CancelEdit();
+                }
 
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Неверный тип данных!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataGridView1.CancelEdit();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Неверный тип данных!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataGridView1.CancelEdit();
-                }
             }
             else
             {
-                try
-                {
-                    databaseManager.Request($"UPDATE Clients SET `{dataGridView1.SelectedCells[0].OwningColumn.Name}` = '{dataGridView1.SelectedCells[0].Value.ToString()}' WHERE ID = {e.RowIndex + 1};");
-
-                }
-                catch (Exception ex)
+                if (databaseManager.Request($"UPDATE Clients SET `{dataGridView1.SelectedCells[0].OwningColumn.Name}` = '{dataGridView1.SelectedCells[0].Value.ToString()}' WHERE ID = {e.RowIndex + 1};", false) == null)
                 {
                     MessageBox.Show("Неверный ввод!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     dataGridView1.CancelEdit();
@@ -168,19 +157,27 @@ namespace OX_DB
 
         private void ЛФКToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExerciseTherapy exerciseTherapy = new ExerciseTherapy();
-            exerciseTherapy.ID = int.Parse(dataGridView1[0, dataGridView1.SelectedCells[0].RowIndex].Value.ToString());
-            exerciseTherapy.ParentFm = this;
-            exerciseTherapy.Show();
+            Sport Sport = new Sport();
+            Sport.ID = int.Parse(dataGridView1[0, dataGridView1.SelectedCells[0].RowIndex].Value.ToString());
+            Sport.ParentFm = this;
+            Sport.Text = "Physical therapy";
+            Sport.name = "Тренировки";
+            Sport.mainTable = "Physical_Therapy";
+            Sport.addTable = "Trainings";
+            Sport.Show();
             Hide();
         }
 
         private void массажToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Massage massage = new Massage();
-            massage.ID = int.Parse(dataGridView1[0, dataGridView1.SelectedCells[0].RowIndex].Value.ToString());
-            massage.ParentFm = this;
-            massage.Show();
+            Sport Sport = new Sport();
+            Sport.ID = int.Parse(dataGridView1[0, dataGridView1.SelectedCells[0].RowIndex].Value.ToString());
+            Sport.ParentFm = this;
+            Sport.Text = "Massage";
+            Sport.name = "Массаж";
+            Sport.mainTable = "Massage";
+            Sport.addTable = "Massage_sessions";
+            Sport.Show();
             Hide();
         }
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -190,11 +187,48 @@ namespace OX_DB
                 var mb = MessageBox.Show("Вы действительно хотите удалить клиента?", "Подтвердите действие", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (mb == DialogResult.Cancel || mb == DialogResult.No)
                     return;
-                if (databaseManager.Request($"SELECT * FROM Sewing WHERE `ФИО` = '{dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString()}';").Rows.Count > 0)
-                    DeleteRow(dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), "Sewing");
-                DeleteRow(dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), "Clients");
+                string currentFIO = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString();
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Sewing"))
+                    DeleteRow(currentFIO, "Sewing");
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Physical_Therapy"))
+                    DeleteRow(currentFIO, "Physical_Therapy");
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Massage"))
+                    DeleteRow(currentFIO, "Massage");
+                DeleteRow(currentFIO, "Clients");
                 SelectData();
             }
+        }
+
+        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && dataGridView1.CurrentCell != null)
+            {
+                string currentServices = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().ToLower();
+                if (!currentServices.Contains("шв"))
+                    швейкаToolStripMenuItem.Enabled = false;
+                else
+                    швейкаToolStripMenuItem.Enabled = true;
+                if (!currentServices.Contains("лфк"))
+                    лФКToolStripMenuItem.Enabled = false;
+                else
+                    лФКToolStripMenuItem.Enabled = true;
+                if (!currentServices.Contains("мсж"))
+                    массажToolStripMenuItem.Enabled = false;
+                else
+                    массажToolStripMenuItem.Enabled = true;
+                contextMenuStrip1.Show(dataGridView1, e.Location);
+            }
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Неверный ввод!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            dataGridView1.CancelEdit();
+        }
+
+        private void обновитToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectData();
         }
 
 
@@ -224,38 +258,19 @@ namespace OX_DB
                 return;
             }
             int currentID = Convert.ToInt32(databaseManager.Request("SELECT COUNT(ID) FROM Clients;").Rows[0][0]) + 1;
-            try
-            {
-                string req = $"INSERT INTO Clients (ID, `ФИО`, `Телефон`, `Адрес`, `Дата рождения`, `Тип услуг`, `Уведомление`) VALUES ({currentID}, '{FIOText.Text}', '{phoneText.Text}', '{addressText.Text}', '{birthdayData.Value.Year}-{birthdayData.Value.Month}-{birthdayData.Value.Day}', '{serviceText.Text}', '{notifyData.Value.Year}-{notifyData.Value.Month}-{notifyData.Value.Day}');";
-                Console.WriteLine(req);
-                databaseManager.Request(req);
-                SelectData();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Неудача!\n" + emailSender.GetReportMsg(), "Ошибка запроса БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                emailSender.SendReport(ex, $"Отправитель: {EmailSender.user["Name"]}, {EmailSender.user["Email"]}");
-            }
-            catch (Exception ex)
-            {
-                emailSender.PrintException(ex, "Ошибка запроса БД");
-            }
+            string req = $"INSERT INTO Clients (ID, `ФИО`, `Телефон`, `Адрес`, `Дата рождения`, `Тип услуг`, `Уведомление`) VALUES ({currentID}, '{FIOText.Text}', '{phoneText.Text}', '{addressText.Text}', '{birthdayData.Value.Year}-{birthdayData.Value.Month}-{birthdayData.Value.Day}', '{serviceText.Text}', '{notifyData.Value.Year}-{notifyData.Value.Month}-{notifyData.Value.Day}');";
+            Console.WriteLine(req);
+            databaseManager.Request(req);
+            SelectData();
+
         }
 
         void DeleteRow(string fio, string table)
         {
-
-            try
-            {
-                int id = Convert.ToInt32(databaseManager.Request($"SELECT ID FROM {table} WHERE `ФИО` = '{fio}';").Rows[0][0]);
-                databaseManager.Request($"DELETE FROM {table} WHERE `ФИО` = '{fio}'");
-                for (global::System.Int32 i = id; i <= databaseManager.Request($"SELECT * FROM {table};").Rows.Count; i++)
-                    databaseManager.Request($"UPDATE {table} SET ID = {i} WHERE ID = {i + 1};");
-            }
-            catch (Exception ex)
-            {
-                emailSender.PrintException(ex, "Ошибка запроса БД");
-            }
+            int id = Convert.ToInt32(databaseManager.Request($"SELECT ID FROM {table} WHERE `ФИО` = '{fio}';").Rows[0][0]);
+            databaseManager.Request($"DELETE FROM {table} WHERE `ФИО` = '{fio}'");
+            for (global::System.Int32 i = id; i <= databaseManager.Request($"SELECT * FROM {table};").Rows.Count; i++)
+                databaseManager.Request($"UPDATE {table} SET ID = {i} WHERE ID = {i + 1};");
         }
 
 
@@ -264,24 +279,32 @@ namespace OX_DB
             dataGridView1.DataSource = databaseManager.Request("SELECT * FROM Clients;");
         }
 
-        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
+        void SetNotifyDate()
         {
-            if (e.Button == MouseButtons.Right && dataGridView1.CurrentCell != null)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("шв"))
-                    швейкаToolStripMenuItem.Enabled = false;
-                else
-                    швейкаToolStripMenuItem.Enabled=true;
-                if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("ЛФК"))
-                    лФКToolStripMenuItem.Enabled = false;
-                else
-                    лФКToolStripMenuItem.Enabled = true;
-                if (!dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().Contains("мсж"))
-                    массажToolStripMenuItem.Enabled = false;
-                else
-                    массажToolStripMenuItem.Enabled = true;
-                contextMenuStrip1.Show(dataGridView1, e.Location);
+                List<DateTime> dateTimes = new List<DateTime>();
+                string currentFIO = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Sewing"))
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Sewing WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Physical_Therapy"))
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Physical_Therapy WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Massage"))
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Massage WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                if (dateTimes.Count == 0)
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Уведомление` FROM Clients WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+
+                dateTimes.Sort();
+                foreach (DateTime date in dateTimes)
+                {
+                    if (date >= DateTime.Today)
+                    {
+                        databaseManager.Request($"UPDATE Clients SET `Уведомление` = '{date:yyyy-MM-dd}' WHERE `ФИО` = '{currentFIO}';");
+                        break;
+                    }
+                }
             }
+            SelectData();
         }
     }
 }
