@@ -22,6 +22,7 @@ namespace OX_DB
         Panel[] panels;
         TextBox[] textBoxesOfFirstMeeting;
         string[] dataString;
+        string folderPath;
         string imageOfTechnicalDrowingPath;
         string imageOfAvatar;
         string imageOfReadyProduct;
@@ -33,9 +34,21 @@ namespace OX_DB
 
         private void Sewing_Load(object sender, EventArgs e)
         {
-            if (!Directory.Exists(@Environment.CurrentDirectory + @"\img"))
+            folderPath = databaseManager.Request($"SELECT Folder FROM Users WHERE Email = '{EmailSender.user["Email"]}';").Rows[0][0].ToString();
+            if (string.IsNullOrEmpty(folderPath) || !Directory.Exists(folderPath))
             {
-                Directory.CreateDirectory(@Environment.CurrentDirectory + @"\img");
+                using (FolderBrowserDialog fd = new FolderBrowserDialog())
+                {
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+                        if (!Directory.Exists(fd.SelectedPath + @"\img"))
+                        {
+                            Directory.CreateDirectory(fd.SelectedPath + @"\img");
+                        }
+                        folderPath = (fd.SelectedPath + @"\img").Replace(@"\", @"\\");
+                        databaseManager.Request($"UPDATE Users SET Folder = '{folderPath}';");
+                    }
+                }
             }
             closeBtnColor = closeBtn.BackColor;
             label1.Text = Text;
@@ -145,7 +158,7 @@ namespace OX_DB
             if (!CheckForCorrectInput()) // check format of inputs
                 return;
 
-            imageOfTechnicalDrowingPath = FileManager.CopyFile(imageOfTechnicalDrowingPath, $"{Environment.CurrentDirectory}\\img"); // save image path after copying
+            imageOfTechnicalDrowingPath = FileManager.CopyFile(imageOfTechnicalDrowingPath, folderPath); // save image path after copying
             Console.WriteLine(imageOfTechnicalDrowingPath);
             if (databaseManager.CheckExistingOfThisPersonInTable(FIO.Text, "Sewing")) // check existing of the person in sewing table before saving
             {
@@ -218,11 +231,13 @@ namespace OX_DB
                 return;
             }
 
-            imageOfAvatar = FileManager.CopyFile(imageOfAvatar, $"{Environment.CurrentDirectory}\\img"); // save image path after copying
+            imageOfAvatar = FileManager.CopyFile(imageOfAvatar, folderPath); // save image path after copying
             Console.WriteLine(imageOfAvatar);
-            databaseManager.Request(GenerateSewingUpdateQuery(new DateTime(1, 1, 1), null, null, null, null, null, null, null, null, null, null,
+            string req = GenerateSewingUpdateQuery(new DateTime(1, 1, 1), null, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                new DateTime(1, 1, 1), null, null, fitDescription.Text, @imageOfAvatar, null, null));
+                new DateTime(1, 1, 1), null, null, fitDescription.Text, @imageOfAvatar, null, null);
+            Console.WriteLine(req);
+            if (databaseManager.Request(req) != null) ;
             MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -244,7 +259,7 @@ namespace OX_DB
                 return;
             }
 
-            imageOfReadyProduct = FileManager.CopyFile(imageOfReadyProduct, $"{Environment.CurrentDirectory}\\img"); // save image path after copying
+            imageOfReadyProduct = FileManager.CopyFile(imageOfReadyProduct, folderPath); // save image path after copying
             databaseManager.Request(GenerateSewingUpdateQuery(new DateTime(1, 1, 1), null, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                 new DateTime(1, 1, 1), null, null, null, null, review.Text, @imageOfReadyProduct));
@@ -319,7 +334,8 @@ namespace OX_DB
         {
             date.Value = (DateTime)dataTable[2];
             for (int i = 3; i <= 27; i++)
-                textBoxesOfFirstMeeting[i - 3].Text = dataTable[i].ToString();
+                if (dataTable[i].ToString() != "0")
+                    textBoxesOfFirstMeeting[i - 3].Text = dataTable[i].ToString();
             firstMeetingDate.Value = (DateTime)dataTable[28];
             imageOfTechnicalDrowingPath = @dataTable[29].ToString();
             if (imageOfTechnicalDrowingPath.Length > 0)
@@ -430,7 +446,7 @@ namespace OX_DB
                 $"`Рбн`, `Рпн`, `СБЗ`, `Л-Я`, `Г-Ж`, `1 встреча`, `Тех. рисунок`, `Описание`, `Описание посадки`, `Аватар`, `Отзыв`, `Готовое изделие`) " +
                 $"VALUES ({currentID}, '{FIO.Text}', '{date.Value.Year}-{date.Value.Month}-{date.Value.Day}', ";
             foreach (var item in textBoxesOfFirstMeeting)
-                requestStr += item.Text + ", ";
+                requestStr += item.Text.Replace(",", ".") + ", ";
             requestStr += $"'{firstMeetingDate.Value.Year}-{firstMeetingDate.Value.Month}-{firstMeetingDate.Value.Day}', '{@imageOfTechnicalDrowingPath}', '{description.Text}', '', '', '', '');";
             Console.WriteLine(requestStr);
             // request to db
@@ -447,7 +463,7 @@ namespace OX_DB
         void DeleteUselessImages() // delete the images which aren't used from a local folder
         {
             DataTable imgs = databaseManager.Request($"SELECT `Тех. рисунок`, `Аватар`, `Готовое изделие` FROM Sewing;");
-            string[] paths = Directory.GetFiles(Environment.CurrentDirectory + "\\img");
+            string[] paths = Directory.GetFiles(folderPath);
             Dictionary<string, int> map = new Dictionary<string, int>();
             for (int i = 0; i < paths.Length; i++)
             {
@@ -468,7 +484,7 @@ namespace OX_DB
                         FileManager.DeleteFile(paths[i]);
                         map.Remove(paths[i]);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Ошибка очистки", "Ошибка очистки", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

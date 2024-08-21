@@ -3,7 +3,8 @@ use ox_db;
 create table Users (
 ID int not null,
 Name varchar(255),
-Email varchar(255));
+Email varchar(255)
+Folder varchar(1000));
 create table Clients (
 ID int not null,
 `ФИО` varchar(1000),

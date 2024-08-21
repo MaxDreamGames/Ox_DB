@@ -284,14 +284,11 @@ namespace OX_DB
                     TextAlign = HorizontalAlignment.Center,
                     Margin = new Padding(20)
                 };
-
-                if (col == 0)
-                {
-                    textBox.KeyDown += lableTextBox_KeyDown;
-                }
                 // Добавляем TextBox в ячейку новой строки
                 PTTable.Controls.Add(textBox, col, PTTable.RowCount - 1);
             }
+
+            (PTTable.GetControlFromPosition(0, PTTable.RowCount - 1) as TextBox).KeyDown += lableTextBox_KeyDown;
             addRowBtnInData.Location = new Point(addRowBtnInData.Location.X, addRowBtnInData.Location.Y + heightOfRow);
             removeRowBtnInData.Location = new Point(removeRowBtnInData.Location.X, removeRowBtnInData.Location.Y + heightOfRow);
         }
@@ -356,18 +353,17 @@ namespace OX_DB
                 for (global::System.Int32 j = 1; j < PTTable.RowCount; j++)
                 {
                     if (j < 4)
+                    {
                         (PTTable.GetControlFromPosition(i, j) as TextBox).Text = currentRow[j + 2].ToString() == "0" ? "" : currentRow[j + 2].ToString();
+                    }
                     else
+                    {
                         if (theRest[j - 4].Split('~').Length > 1)
-                        (PTTable.GetControlFromPosition(i, j) as TextBox).Text = theRest1[j - 4].Split('~')[1].Replace('.', ',');
-
-                }
-                if (theRest1.Count > 0 && PTTable.RowCount < 4 + theRest1.Count)
-                {
-                    Console.WriteLine(currentRow[6].ToString());
-                    /* 
-                     Console.WriteLine($"col: {i}, Row: {j}, v: {theRest[j]}");*/
-
+                        {
+                            string s = theRest1[j - 4].Split('~')[1].Replace('.', ',');
+                            (PTTable.GetControlFromPosition(i, j) as TextBox).Text = s == "0" ? "" : s;
+                        }
+                    }
                 }
 
             }
@@ -417,7 +413,6 @@ namespace OX_DB
             {
                 for (global::System.Int32 i = 1; i < PTTable.ColumnCount; i++)
                 {
-
                     id = Convert.ToInt32(databaseManager.Request($"SELECT MAX(ID) FROM {addTable};").Rows[0][0]) + 1;
                     string requestStr = $"INSERT INTO {addTable} (ID, `userID`, `Номер`, `Вес`, `Давление`, `ЧСС`, `Остальное`) VALUES " +
                         $"({id}, {userId}, {i}";
@@ -445,7 +440,6 @@ namespace OX_DB
                             Label rowName = PTTable.GetControlFromPosition(0, j) as Label;
                             theRest += $"{rowName.Text}~{(string.IsNullOrEmpty(currentTB.Text) ? "0" : currentTB.Text)}\n";
                         }
-
                     }
                     theRest.TrimEnd('\n');
                     requestStr += $", '{theRest}');";

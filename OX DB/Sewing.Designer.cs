@@ -131,6 +131,7 @@ namespace OX_DB
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -1367,5 +1368,6 @@ namespace OX_DB
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.RichTextBox fitDescription;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

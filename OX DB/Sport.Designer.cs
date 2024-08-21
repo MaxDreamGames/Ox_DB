@@ -845,7 +845,6 @@ namespace OX_DB
             this.tall.Name = "tall";
             this.tall.Size = new System.Drawing.Size(43, 29);
             this.tall.TabIndex = 15;
-            this.tall.Text = "000";
             // 
             // wCheckBox
             // 
@@ -987,7 +986,7 @@ namespace OX_DB
             this.programPanel.Controls.Add(this.programTB);
             this.programPanel.Controls.Add(this.label21);
             this.programPanel.Controls.Add(this.programSaveBtn);
-            this.programPanel.Location = new System.Drawing.Point(3, 103);
+            this.programPanel.Location = new System.Drawing.Point(3, 101);
             this.programPanel.Name = "programPanel";
             this.programPanel.Size = new System.Drawing.Size(1463, 749);
             this.programPanel.TabIndex = 13;
