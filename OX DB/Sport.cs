@@ -384,12 +384,15 @@ namespace OX_DB
                         if (string.IsNullOrEmpty(currentTB.Text))
                             currentTB.Text = "0";
 
-                        if (!float.TryParse(currentTB.Text, out float value))
+                        if (!float.TryParse(currentTB.Text, out float value) && j != 2)
                         {
                             MessageBox.Show("Неверное значение!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        requestStr += $"`{(PTTable.GetControlFromPosition(0, j) as Label).Text}` = {currentTB.Text.Replace(',', '.')}, ";
+                        if (j == 2)
+                            requestStr += $"`{(PTTable.GetControlFromPosition(0, j) as Label).Text}` = '{currentTB.Text}', ";
+                        else
+                            requestStr += $"`{(PTTable.GetControlFromPosition(0, j) as Label).Text}` = {currentTB.Text.Replace(',', '.')}, ";
                         if (currentTB.Text == "0")
                             currentTB.Text = "";
                     }
@@ -413,7 +416,10 @@ namespace OX_DB
             {
                 for (global::System.Int32 i = 1; i < PTTable.ColumnCount; i++)
                 {
-                    id = Convert.ToInt32(databaseManager.Request($"SELECT MAX(ID) FROM {addTable};").Rows[0][0]) + 1;
+                    if (Convert.ToInt32(databaseManager.Request($"SELECT COUNT(ID) FROM {addTable};").Rows[0][0]) == 0)
+                        id = 1;
+                    else
+                        id = Convert.ToInt32(databaseManager.Request($"SELECT MAX(ID) FROM {addTable};").Rows[0][0]) + 1;
                     string requestStr = $"INSERT INTO {addTable} (ID, `userID`, `Номер`, `Вес`, `Давление`, `ЧСС`, `Остальное`) VALUES " +
                         $"({id}, {userId}, {i}";
                     string theRest = "";
@@ -428,12 +434,15 @@ namespace OX_DB
                                 continue;
                             }
 
-                            if (!float.TryParse(currentTB.Text, out float value))
+                            if (!float.TryParse(currentTB.Text, out float value) && j != 2)
                             {
                                 MessageBox.Show("Неверное значение!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
-                            requestStr += $", {currentTB.Text.Replace(',', '.')}";
+                            if (j == 2)
+                                requestStr += $", '{currentTB.Text}'";
+                            else
+                                requestStr += $", {currentTB.Text.Replace(',', '.')}";
                         }
                         if (j > 3)
                         {

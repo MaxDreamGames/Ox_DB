@@ -169,7 +169,6 @@ namespace OX_DB
                     SBZ.Text.Replace(',', '.'), L_Ya.Text.Replace(',', '.'), G_Zh.Text.Replace(',', '.'), firstMeetingDate.Value, imageOfTechnicalDrowingPath, description.Text, null, null, null, null);
                 Console.WriteLine(updateQuery);
                 databaseManager.Request(updateQuery);
-                databaseManager.Request($"UPDATE Clients SET `Уведомление` = '{date.Value:yyyy-MM-dd}' WHERE `ФИО` = '{FIO.Text}';");
 
                 if (!CheckDataUpdating())
                 {
@@ -237,8 +236,8 @@ namespace OX_DB
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                 new DateTime(1, 1, 1), null, null, fitDescription.Text, @imageOfAvatar, null, null);
             Console.WriteLine(req);
-            if (databaseManager.Request(req) != null) ;
-            MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (databaseManager.Request(req) != null)
+                MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void fittingPanel_Enter(object sender, EventArgs e)

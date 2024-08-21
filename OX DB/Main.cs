@@ -136,7 +136,7 @@ namespace OX_DB
             }
             else
             {
-                if (databaseManager.Request($"UPDATE Clients SET `{dataGridView1.SelectedCells[0].OwningColumn.Name}` = '{dataGridView1.SelectedCells[0].Value.ToString()}' WHERE ID = {e.RowIndex + 1};", false) == null)
+                if (string.IsNullOrEmpty(dataGridView1.SelectedCells[0].Value.ToString()) || databaseManager.Request($"UPDATE Clients SET `{dataGridView1.SelectedCells[0].OwningColumn.Name}` = '{dataGridView1.SelectedCells[0].Value.ToString()}' WHERE ID = {e.RowIndex + 1};", false) == null)
                 {
                     MessageBox.Show("Неверный ввод!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     dataGridView1.CancelEdit();
@@ -262,13 +262,13 @@ namespace OX_DB
             Console.WriteLine(req);
             databaseManager.Request(req);
             SelectData();
-
+            ClearInputs();
         }
 
         void DeleteRow(string fio, string table)
         {
             int id = Convert.ToInt32(databaseManager.Request($"SELECT ID FROM {table} WHERE `ФИО` = '{fio}';").Rows[0][0]);
-            databaseManager.Request($"DELETE FROM {table} WHERE `ФИО` = '{fio}'");
+            databaseManager.Request($"DELETE FROM {table} WHERE `ФИО` = '{fio}' AND ID = {id}");
             for (global::System.Int32 i = id; i <= databaseManager.Request($"SELECT * FROM {table};").Rows.Count; i++)
                 databaseManager.Request($"UPDATE {table} SET ID = {i} WHERE ID = {i + 1};");
         }
@@ -276,6 +276,7 @@ namespace OX_DB
 
         public void SelectData()
         {
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = databaseManager.Request("SELECT * FROM Clients;");
         }
 
@@ -305,6 +306,16 @@ namespace OX_DB
                 }
             }
             SelectData();
+        }
+
+        void ClearInputs()
+        {
+            FIOText.Clear();
+            phoneText.Clear();
+            addressText.Clear();
+            birthdayData.Value = birthdayData.MinDate;
+            serviceText.Text = "None";
+            notifyData.Value = notifyData.MinDate;
         }
     }
 }

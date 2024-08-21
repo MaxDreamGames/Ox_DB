@@ -209,6 +209,8 @@ namespace OX_DB
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.anamnesPanel);
+            this.groupBox1.Controls.Add(this.programPanel);
             this.groupBox1.Controls.Add(this.program);
             this.groupBox1.Controls.Add(this.anamnes);
             this.groupBox1.Controls.Add(this.data);
@@ -938,9 +940,9 @@ namespace OX_DB
             this.anamnesPanel.Controls.Add(this.anamnesTB);
             this.anamnesPanel.Controls.Add(this.label20);
             this.anamnesPanel.Controls.Add(this.anamnesSaveBtn);
-            this.anamnesPanel.Location = new System.Drawing.Point(3, 103);
+            this.anamnesPanel.Location = new System.Drawing.Point(320, 17);
             this.anamnesPanel.Name = "anamnesPanel";
-            this.anamnesPanel.Size = new System.Drawing.Size(1463, 749);
+            this.anamnesPanel.Size = new System.Drawing.Size(1463, 748);
             this.anamnesPanel.TabIndex = 12;
             // 
             // anamnesTB
@@ -986,7 +988,7 @@ namespace OX_DB
             this.programPanel.Controls.Add(this.programTB);
             this.programPanel.Controls.Add(this.label21);
             this.programPanel.Controls.Add(this.programSaveBtn);
-            this.programPanel.Location = new System.Drawing.Point(3, 101);
+            this.programPanel.Location = new System.Drawing.Point(338, 0);
             this.programPanel.Name = "programPanel";
             this.programPanel.Size = new System.Drawing.Size(1463, 749);
             this.programPanel.TabIndex = 13;
@@ -1031,8 +1033,6 @@ namespace OX_DB
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1484, 925);
-            this.Controls.Add(this.programPanel);
-            this.Controls.Add(this.anamnesPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.backBtn);
