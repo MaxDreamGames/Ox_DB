@@ -457,6 +457,7 @@ namespace OX_DB
             {
                 emailSender.PrintException(ex, "Ошибка запроса к БД");
             }
+            ParentFm.SetNotifyDateAndServices();
         }
 
         void DeleteUselessImages() // delete the images which aren't used from a local folder

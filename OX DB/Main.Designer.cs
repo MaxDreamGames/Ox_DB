@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,12 +43,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.phoneText = new System.Windows.Forms.TextBox();
             this.addressText = new System.Windows.Forms.TextBox();
             this.birthdayData = new System.Windows.Forms.DateTimePicker();
-            this.serviceText = new System.Windows.Forms.ComboBox();
             this.notifyData = new System.Windows.Forms.DateTimePicker();
             this.addBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,6 +57,10 @@
             this.массажToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.обновитToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьИзToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.швейкаToolStripMenu1Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.лФКToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.массажToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -190,21 +192,11 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Дата рождения";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label6.Location = new System.Drawing.Point(984, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 26);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Тип услуг";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label7.Location = new System.Drawing.Point(1123, 60);
+            this.label7.Location = new System.Drawing.Point(980, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 26);
             this.label7.TabIndex = 8;
@@ -240,31 +232,13 @@
             this.birthdayData.TabIndex = 11;
             this.birthdayData.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             // 
-            // serviceText
-            // 
-            this.serviceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.serviceText.FormattingEnabled = true;
-            this.serviceText.Items.AddRange(new object[] {
-            "шв",
-            "ЛФК",
-            "мсж",
-            "шв/ЛФК",
-            "шв/мсж",
-            "шв/ЛФК/мсж"});
-            this.serviceText.Location = new System.Drawing.Point(989, 89);
-            this.serviceText.MaxLength = 10;
-            this.serviceText.Name = "serviceText";
-            this.serviceText.Size = new System.Drawing.Size(121, 32);
-            this.serviceText.TabIndex = 12;
-            this.serviceText.Text = "None";
-            // 
             // notifyData
             // 
             this.notifyData.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.notifyData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.notifyData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.notifyData.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.notifyData.Location = new System.Drawing.Point(1128, 87);
+            this.notifyData.Location = new System.Drawing.Point(985, 90);
             this.notifyData.Name = "notifyData";
             this.notifyData.Size = new System.Drawing.Size(165, 29);
             this.notifyData.TabIndex = 13;
@@ -275,7 +249,7 @@
             this.addBtn.BackColor = System.Drawing.Color.SteelBlue;
             this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.addBtn.Location = new System.Drawing.Point(1312, 74);
+            this.addBtn.Location = new System.Drawing.Point(1178, 75);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(140, 42);
             this.addBtn.TabIndex = 14;
@@ -286,32 +260,32 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(153)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(169)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(14, 134);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -332,14 +306,15 @@
             this.швейкаToolStripMenuItem,
             this.спортToolStripMenuItem,
             this.toolStripSeparator1,
-            this.обновитToolStripMenuItem});
+            this.обновитToolStripMenuItem,
+            this.удалитьИзToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(134, 98);
             // 
             // швейкаToolStripMenuItem
             // 
             this.швейкаToolStripMenuItem.Name = "швейкаToolStripMenuItem";
-            this.швейкаToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.швейкаToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.швейкаToolStripMenuItem.Text = "Швейка";
             this.швейкаToolStripMenuItem.Click += new System.EventHandler(this.швейкаToolStripMenuItem_Click);
             // 
@@ -349,7 +324,7 @@
             this.лФКToolStripMenuItem,
             this.массажToolStripMenuItem});
             this.спортToolStripMenuItem.Name = "спортToolStripMenuItem";
-            this.спортToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.спортToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.спортToolStripMenuItem.Text = "Спорт";
             // 
             // лФКToolStripMenuItem
@@ -369,14 +344,45 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
             // 
             // обновитToolStripMenuItem
             // 
             this.обновитToolStripMenuItem.Name = "обновитToolStripMenuItem";
-            this.обновитToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обновитToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.обновитToolStripMenuItem.Text = "Обновить";
             this.обновитToolStripMenuItem.Click += new System.EventHandler(this.обновитToolStripMenuItem_Click);
+            // 
+            // удалитьИзToolStripMenuItem
+            // 
+            this.удалитьИзToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.швейкаToolStripMenu1Item,
+            this.лФКToolStripMenuItem1,
+            this.массажToolStripMenuItem1});
+            this.удалитьИзToolStripMenuItem.Name = "удалитьИзToolStripMenuItem";
+            this.удалитьИзToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.удалитьИзToolStripMenuItem.Text = "Удалить из";
+            // 
+            // швейкаToolStripMenu1Item
+            // 
+            this.швейкаToolStripMenu1Item.Name = "швейкаToolStripMenu1Item";
+            this.швейкаToolStripMenu1Item.Size = new System.Drawing.Size(180, 22);
+            this.швейкаToolStripMenu1Item.Text = "Швейка";
+            this.швейкаToolStripMenu1Item.Click += new System.EventHandler(this.швейкиToolStripMenuItem_Click);
+            // 
+            // лФКToolStripMenuItem1
+            // 
+            this.лФКToolStripMenuItem1.Name = "лФКToolStripMenuItem1";
+            this.лФКToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.лФКToolStripMenuItem1.Text = "ЛФК";
+            this.лФКToolStripMenuItem1.Click += new System.EventHandler(this.лФКToolStripMenuItem1_Click);
+            // 
+            // массажToolStripMenuItem1
+            // 
+            this.массажToolStripMenuItem1.Name = "массажToolStripMenuItem1";
+            this.массажToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.массажToolStripMenuItem1.Text = "Массаж";
+            this.массажToolStripMenuItem1.Click += new System.EventHandler(this.массажToolStripMenuItem1_Click);
             // 
             // Main
             // 
@@ -387,12 +393,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.notifyData);
-            this.Controls.Add(this.serviceText);
             this.Controls.Add(this.birthdayData);
             this.Controls.Add(this.addressText);
             this.Controls.Add(this.phoneText);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -426,12 +430,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox phoneText;
         private System.Windows.Forms.TextBox addressText;
         private System.Windows.Forms.DateTimePicker birthdayData;
-        private System.Windows.Forms.ComboBox serviceText;
         private System.Windows.Forms.DateTimePicker notifyData;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -442,5 +444,9 @@
         private System.Windows.Forms.ToolStripMenuItem массажToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem обновитToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьИзToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem швейкаToolStripMenu1Item;
+        private System.Windows.Forms.ToolStripMenuItem лФКToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem массажToolStripMenuItem1;
     }
 }

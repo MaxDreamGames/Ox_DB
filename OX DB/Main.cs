@@ -25,7 +25,7 @@ namespace OX_DB
             label1.Text = Text;
             textBoxes = new TextBox[3] { FIOText, phoneText, addressText };
             SelectData();
-            SetNotifyDate();
+            SetNotifyDateAndServices();
         }
 
         private void panel1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -110,7 +110,7 @@ namespace OX_DB
 
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 5)
             {
                 MessageBox.Show("Этот столбец не редактируем!", "Отказ в доступе", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
@@ -143,7 +143,6 @@ namespace OX_DB
                 }
             }
 
-            SelectData();
         }
 
         private void швейкаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,8 +183,8 @@ namespace OX_DB
         {
             if (e.KeyCode == Keys.Delete && !dataGridView1.IsCurrentCellInEditMode)
             {
-                var mb = MessageBox.Show("Вы действительно хотите удалить клиента?", "Подтвердите действие", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (mb == DialogResult.Cancel || mb == DialogResult.No)
+                var mb = MessageBox.Show("Вы действительно хотите удалить клиента?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (mb == DialogResult.No)
                     return;
                 string currentFIO = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString();
                 if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Sewing"))
@@ -203,19 +202,11 @@ namespace OX_DB
         {
             if (e.Button == MouseButtons.Right && dataGridView1.CurrentCell != null)
             {
-                string currentServices = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString().ToLower();
-                if (!currentServices.Contains("шв"))
-                    швейкаToolStripMenuItem.Enabled = false;
-                else
-                    швейкаToolStripMenuItem.Enabled = true;
-                if (!currentServices.Contains("лфк"))
-                    лФКToolStripMenuItem.Enabled = false;
-                else
-                    лФКToolStripMenuItem.Enabled = true;
-                if (!currentServices.Contains("мсж"))
-                    массажToolStripMenuItem.Enabled = false;
-                else
-                    массажToolStripMenuItem.Enabled = true;
+                string currentFIO = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value.ToString();
+
+                швейкаToolStripMenu1Item.Enabled = databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Sewing");
+                лФКToolStripMenuItem1.Enabled = databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Physical_Therapy");
+                массажToolStripMenuItem1.Enabled = databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Massage");
                 contextMenuStrip1.Show(dataGridView1, e.Location);
             }
         }
@@ -229,6 +220,22 @@ namespace OX_DB
         private void обновитToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SelectData();
+            SetNotifyDateAndServices();
+        }
+
+        private void швейкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteRowViaContextMenu(швейкаToolStripMenu1Item.Text, "Sewing");
+        }
+
+        private void лФКToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DeleteRowViaContextMenu(лФКToolStripMenuItem1.Text, "Physical_Therapy");
+        }
+
+        private void массажToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DeleteRowViaContextMenu(массажToolStripMenuItem1.Text, "Massage");
         }
 
 
@@ -241,7 +248,7 @@ namespace OX_DB
                 while (item.Text[0] == ' ' || item.Text[0] == '\t' || item.Text[item.Text.Length - 1] == ' ' || item.Text[item.Text.Length - 1] == '\t')
                     item.Text = item.Text.Trim(new char[] { ' ', '\t' });
             }
-            if (string.IsNullOrEmpty(FIOText.Text) || string.IsNullOrEmpty(phoneText.Text) || string.IsNullOrEmpty(addressText.Text) || serviceText.Text == "None")
+            if (string.IsNullOrEmpty(FIOText.Text) || string.IsNullOrEmpty(phoneText.Text) || string.IsNullOrEmpty(addressText.Text))
             {
                 MessageBox.Show("Не все поля заполнены!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -258,7 +265,7 @@ namespace OX_DB
                 return;
             }
             int currentID = Convert.ToInt32(databaseManager.Request("SELECT COUNT(ID) FROM Clients;").Rows[0][0]) + 1;
-            string req = $"INSERT INTO Clients (ID, `ФИО`, `Телефон`, `Адрес`, `Дата рождения`, `Тип услуг`, `Уведомление`) VALUES ({currentID}, '{FIOText.Text}', '{phoneText.Text}', '{addressText.Text}', '{birthdayData.Value.Year}-{birthdayData.Value.Month}-{birthdayData.Value.Day}', '{serviceText.Text}', '{notifyData.Value.Year}-{notifyData.Value.Month}-{notifyData.Value.Day}');";
+            string req = $"INSERT INTO Clients (ID, `ФИО`, `Телефон`, `Адрес`, `Дата рождения`, `Тип услуг`, `Уведомление`) VALUES ({currentID}, '{FIOText.Text}', '{phoneText.Text}', '{addressText.Text}', '{birthdayData.Value.Year}-{birthdayData.Value.Month}-{birthdayData.Value.Day}', '', '{notifyData.Value.Year}-{notifyData.Value.Month}-{notifyData.Value.Day}');";
             Console.WriteLine(req);
             databaseManager.Request(req);
             SelectData();
@@ -273,37 +280,80 @@ namespace OX_DB
                 databaseManager.Request($"UPDATE {table} SET ID = {i} WHERE ID = {i + 1};");
         }
 
+        void DeleteRowViaContextMenu(string name, string table)
+        {
+            var mb = MessageBox.Show($"Вы действительно хотите удалить клиента из \"{name}\"?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (mb == DialogResult.No)
+                return;
+            DeleteRow(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value.ToString(), table);
+            string currentFIO = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            string currentID = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            string currentServices = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString();
+            if (table == "Sewing")
+                databaseManager.Request($"UPDATE Clients SET `Тип услуг` = '{currentServices.Replace("шв/", "")}' WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};");
+            if (table == "Physical_Therapy")
+                databaseManager.Request($"UPDATE Clients SET `Тип услуг` = '{currentServices.Replace("ЛФК", "")}' WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};");
+            if (table == "Massage")
+                databaseManager.Request($"UPDATE Clients SET `Тип услуг` = '{currentServices.Replace("/мсж", "")}' WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};");
+            SelectData();
+        }
 
         public void SelectData()
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = databaseManager.Request("SELECT * FROM Clients;");
+
         }
 
-        void SetNotifyDate()
+        public void SetNotifyDateAndServices()
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 List<DateTime> dateTimes = new List<DateTime>();
                 string currentFIO = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                string currentID = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                string currentServices = "";
+
                 if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Sewing"))
-                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Sewing WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                {
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Sewing WHERE `ФИО` = '{currentFIO}'").Rows[0][0]);
+                    if (string.IsNullOrEmpty(currentServices))
+                        currentServices += "шв";
+                    else
+                        currentServices += "/шв";
+                }
+
                 if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Physical_Therapy"))
-                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Physical_Therapy WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                {
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Physical_Therapy WHERE `ФИО` = '{currentFIO}'").Rows[0][0]);
+                    if (string.IsNullOrEmpty(currentServices))
+                        currentServices += "ЛФК";
+                    else
+                        currentServices += "/ЛФК";
+                }
+
                 if (databaseManager.CheckExistingOfThisPersonInTable(currentFIO, "Massage"))
-                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Massage WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                {
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Дата` FROM Massage WHERE `ФИО` = '{currentFIO}'").Rows[0][0]);
+                    if (string.IsNullOrEmpty(currentServices))
+                        currentServices += "мсж";
+                    else
+                        currentServices += "/мсж";
+                }
+
                 if (dateTimes.Count == 0)
-                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Уведомление` FROM Clients WHERE `ФИО` = '{currentFIO}';").Rows[0][0]);
+                    dateTimes.Add((DateTime)databaseManager.Request($"SELECT `Уведомление` FROM Clients WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};").Rows[0][0]);
 
                 dateTimes.Sort();
                 foreach (DateTime date in dateTimes)
                 {
                     if (date >= DateTime.Today)
                     {
-                        databaseManager.Request($"UPDATE Clients SET `Уведомление` = '{date:yyyy-MM-dd}' WHERE `ФИО` = '{currentFIO}';");
+                        databaseManager.Request($"UPDATE Clients SET `Уведомление` = '{date:yyyy-MM-dd}' WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};");
                         break;
                     }
                 }
+                databaseManager.Request($"UPDATE Clients SET `Тип услуг` = '{currentServices}' WHERE `ФИО` = '{currentFIO}' AND ID = {currentID};");
             }
             SelectData();
         }
@@ -314,7 +364,6 @@ namespace OX_DB
             phoneText.Clear();
             addressText.Clear();
             birthdayData.Value = birthdayData.MinDate;
-            serviceText.Text = "None";
             notifyData.Value = notifyData.MinDate;
         }
     }

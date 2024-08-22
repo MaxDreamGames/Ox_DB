@@ -311,6 +311,7 @@ namespace OX_DB
             string req = $"INSERT INTO {mainTable} (`ID`, `ФИО`, `Дата`, `Пол`, `Рост`, `Анамнез`, `Программа`) VALUES" +
                 $" ({currentID}, '{FIO.Text}', '{date.Value:yyyy-MM-dd}', '{(mCheckBox.Checked ? mCheckBox.Text : wCheckBox.Text)}', {int.Parse(tall.Text)}, '', '');";
             databaseManager.Request(req);
+            ParentFm.SetNotifyDateAndServices();
         }
 
         public void FillData()
