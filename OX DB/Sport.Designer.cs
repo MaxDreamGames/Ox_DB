@@ -38,6 +38,14 @@ namespace OX_DB
             this.closeBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.anamnesPanel = new System.Windows.Forms.Panel();
+            this.anamnesTB = new System.Windows.Forms.RichTextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.anamnesSaveBtn = new System.Windows.Forms.Button();
+            this.programPanel = new System.Windows.Forms.Panel();
+            this.programTB = new System.Windows.Forms.RichTextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.programSaveBtn = new System.Windows.Forms.Button();
             this.program = new System.Windows.Forms.Button();
             this.anamnes = new System.Windows.Forms.Button();
             this.data = new System.Windows.Forms.Button();
@@ -99,21 +107,13 @@ namespace OX_DB
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.anamnesPanel = new System.Windows.Forms.Panel();
-            this.anamnesTB = new System.Windows.Forms.RichTextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.anamnesSaveBtn = new System.Windows.Forms.Button();
-            this.programPanel = new System.Windows.Forms.Panel();
-            this.programTB = new System.Windows.Forms.RichTextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.programSaveBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.dataPanel.SuspendLayout();
-            this.PTTable.SuspendLayout();
             this.anamnesPanel.SuspendLayout();
             this.programPanel.SuspendLayout();
+            this.dataPanel.SuspendLayout();
+            this.PTTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -209,8 +209,6 @@ namespace OX_DB
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.anamnesPanel);
-            this.groupBox1.Controls.Add(this.programPanel);
             this.groupBox1.Controls.Add(this.program);
             this.groupBox1.Controls.Add(this.anamnes);
             this.groupBox1.Controls.Add(this.data);
@@ -222,6 +220,102 @@ namespace OX_DB
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
+            // 
+            // anamnesPanel
+            // 
+            this.anamnesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.anamnesPanel.AutoScroll = true;
+            this.anamnesPanel.Controls.Add(this.anamnesTB);
+            this.anamnesPanel.Controls.Add(this.label20);
+            this.anamnesPanel.Controls.Add(this.anamnesSaveBtn);
+            this.anamnesPanel.Location = new System.Drawing.Point(6, 102);
+            this.anamnesPanel.Name = "anamnesPanel";
+            this.anamnesPanel.Size = new System.Drawing.Size(1463, 748);
+            this.anamnesPanel.TabIndex = 12;
+            // 
+            // anamnesTB
+            // 
+            this.anamnesTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.anamnesTB.Location = new System.Drawing.Point(23, 50);
+            this.anamnesTB.Name = "anamnesTB";
+            this.anamnesTB.Size = new System.Drawing.Size(1427, 615);
+            this.anamnesTB.TabIndex = 80;
+            this.anamnesTB.Text = "";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.label20.Location = new System.Drawing.Point(19, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(96, 24);
+            this.label20.TabIndex = 79;
+            this.label20.Text = "Анамнез";
+            // 
+            // anamnesSaveBtn
+            // 
+            this.anamnesSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.anamnesSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
+            this.anamnesSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.anamnesSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.anamnesSaveBtn.Font = new System.Drawing.Font("Comic Sans MS", 22.75F);
+            this.anamnesSaveBtn.Location = new System.Drawing.Point(1183, 671);
+            this.anamnesSaveBtn.Name = "anamnesSaveBtn";
+            this.anamnesSaveBtn.Size = new System.Drawing.Size(241, 64);
+            this.anamnesSaveBtn.TabIndex = 78;
+            this.anamnesSaveBtn.Text = "Сохранить";
+            this.anamnesSaveBtn.UseVisualStyleBackColor = false;
+            this.anamnesSaveBtn.Click += new System.EventHandler(this.anamnesSaveBtn_Click);
+            // 
+            // programPanel
+            // 
+            this.programPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.programPanel.AutoScroll = true;
+            this.programPanel.Controls.Add(this.programTB);
+            this.programPanel.Controls.Add(this.label21);
+            this.programPanel.Controls.Add(this.programSaveBtn);
+            this.programPanel.Location = new System.Drawing.Point(5, 102);
+            this.programPanel.Name = "programPanel";
+            this.programPanel.Size = new System.Drawing.Size(1463, 749);
+            this.programPanel.TabIndex = 13;
+            // 
+            // programTB
+            // 
+            this.programTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.programTB.Location = new System.Drawing.Point(20, 46);
+            this.programTB.Name = "programTB";
+            this.programTB.Size = new System.Drawing.Size(1427, 615);
+            this.programTB.TabIndex = 83;
+            this.programTB.Text = "";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.label21.Location = new System.Drawing.Point(16, 17);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(120, 24);
+            this.label21.TabIndex = 82;
+            this.label21.Text = "Программа";
+            // 
+            // programSaveBtn
+            // 
+            this.programSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.programSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
+            this.programSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.programSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.programSaveBtn.Font = new System.Drawing.Font("Comic Sans MS", 22.75F);
+            this.programSaveBtn.Location = new System.Drawing.Point(1180, 667);
+            this.programSaveBtn.Name = "programSaveBtn";
+            this.programSaveBtn.Size = new System.Drawing.Size(241, 64);
+            this.programSaveBtn.TabIndex = 81;
+            this.programSaveBtn.Text = "Сохранить";
+            this.programSaveBtn.UseVisualStyleBackColor = false;
+            this.programSaveBtn.Click += new System.EventHandler(this.programSaveBtn_Click);
             // 
             // program
             // 
@@ -931,108 +1025,14 @@ namespace OX_DB
             this.label2.TabIndex = 0;
             this.label2.Text = "ФИО";
             // 
-            // anamnesPanel
-            // 
-            this.anamnesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.anamnesPanel.AutoScroll = true;
-            this.anamnesPanel.Controls.Add(this.anamnesTB);
-            this.anamnesPanel.Controls.Add(this.label20);
-            this.anamnesPanel.Controls.Add(this.anamnesSaveBtn);
-            this.anamnesPanel.Location = new System.Drawing.Point(320, 17);
-            this.anamnesPanel.Name = "anamnesPanel";
-            this.anamnesPanel.Size = new System.Drawing.Size(1463, 748);
-            this.anamnesPanel.TabIndex = 12;
-            // 
-            // anamnesTB
-            // 
-            this.anamnesTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.anamnesTB.Location = new System.Drawing.Point(23, 50);
-            this.anamnesTB.Name = "anamnesTB";
-            this.anamnesTB.Size = new System.Drawing.Size(1427, 615);
-            this.anamnesTB.TabIndex = 80;
-            this.anamnesTB.Text = "";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(19, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(96, 24);
-            this.label20.TabIndex = 79;
-            this.label20.Text = "Анамнез";
-            // 
-            // anamnesSaveBtn
-            // 
-            this.anamnesSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.anamnesSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
-            this.anamnesSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.anamnesSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.anamnesSaveBtn.Font = new System.Drawing.Font("Comic Sans MS", 22.75F);
-            this.anamnesSaveBtn.Location = new System.Drawing.Point(1183, 671);
-            this.anamnesSaveBtn.Name = "anamnesSaveBtn";
-            this.anamnesSaveBtn.Size = new System.Drawing.Size(241, 64);
-            this.anamnesSaveBtn.TabIndex = 78;
-            this.anamnesSaveBtn.Text = "Сохранить";
-            this.anamnesSaveBtn.UseVisualStyleBackColor = false;
-            this.anamnesSaveBtn.Click += new System.EventHandler(this.anamnesSaveBtn_Click);
-            // 
-            // programPanel
-            // 
-            this.programPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.programPanel.AutoScroll = true;
-            this.programPanel.Controls.Add(this.programTB);
-            this.programPanel.Controls.Add(this.label21);
-            this.programPanel.Controls.Add(this.programSaveBtn);
-            this.programPanel.Location = new System.Drawing.Point(338, 0);
-            this.programPanel.Name = "programPanel";
-            this.programPanel.Size = new System.Drawing.Size(1463, 749);
-            this.programPanel.TabIndex = 13;
-            // 
-            // programTB
-            // 
-            this.programTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.programTB.Location = new System.Drawing.Point(20, 46);
-            this.programTB.Name = "programTB";
-            this.programTB.Size = new System.Drawing.Size(1427, 615);
-            this.programTB.TabIndex = 83;
-            this.programTB.Text = "";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.label21.Location = new System.Drawing.Point(16, 17);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(120, 24);
-            this.label21.TabIndex = 82;
-            this.label21.Text = "Программа";
-            // 
-            // programSaveBtn
-            // 
-            this.programSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.programSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(185)))), ((int)(((byte)(223)))));
-            this.programSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.programSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.programSaveBtn.Font = new System.Drawing.Font("Comic Sans MS", 22.75F);
-            this.programSaveBtn.Location = new System.Drawing.Point(1180, 667);
-            this.programSaveBtn.Name = "programSaveBtn";
-            this.programSaveBtn.Size = new System.Drawing.Size(241, 64);
-            this.programSaveBtn.TabIndex = 81;
-            this.programSaveBtn.Text = "Сохранить";
-            this.programSaveBtn.UseVisualStyleBackColor = false;
-            this.programSaveBtn.Click += new System.EventHandler(this.programSaveBtn_Click);
-            // 
             // Sport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1484, 925);
+            this.Controls.Add(this.programPanel);
+            this.Controls.Add(this.anamnesPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.backBtn);
@@ -1051,14 +1051,14 @@ namespace OX_DB
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.dataPanel.ResumeLayout(false);
-            this.dataPanel.PerformLayout();
-            this.PTTable.ResumeLayout(false);
-            this.PTTable.PerformLayout();
             this.anamnesPanel.ResumeLayout(false);
             this.anamnesPanel.PerformLayout();
             this.programPanel.ResumeLayout(false);
             this.programPanel.PerformLayout();
+            this.dataPanel.ResumeLayout(false);
+            this.dataPanel.PerformLayout();
+            this.PTTable.ResumeLayout(false);
+            this.PTTable.PerformLayout();
             this.ResumeLayout(false);
 
         }
